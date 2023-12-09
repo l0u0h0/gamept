@@ -1,0 +1,154 @@
+/* Tailwind 기본 스타일과 플러그인에 의해 등록된 모든 기본 스타일을 주입 */
+@tailwind base;
+/* Tailwind 컴포넌트 클래스와 플러그인에 의해 등록된 컴포넌트 클래스를 주입 */
+@tailwind components;
+/* Tailwind 유틸리티 클래스와 플러그인에 의해 등록된 모든 유틸리티 클래스를 주입 */
+@tailwind utilities;
+
+@font-face {
+  font-family: 'HOL';
+  src: url(./assets/font/HeirofLightRegular.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HOL';
+  src: url(./assets/font/HeirofLightBold.ttf) format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@layer base {
+  [hidden] {
+    @apply hidden;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  button:disabled {
+    @apply cursor-not-allowed;
+  }
+
+  abbr[title] {
+    @apply cursor-help no-underline;
+  }
+}
+
+@layer components {
+  /* 이런식으로 원하는 스타일을 커스텀화해서 사용 가능합니다.! */
+  /* .medium-blue {
+    @apply font-suit w-40 h-16 text-20 font-medium text-white bg-mainblue rounded-xl;
+    @apply font-suit w-40 h-16 text-20 font-medium text-white bg-mainblue rounded-xl;
+  } */
+  .in-game {
+    @apply w-full h-full absolute overflow-y-scroll px-10 text-24 text-primary font-hol text-left;
+  }
+
+  .ending {
+    @apply w-full h-full absolute overflow-y-scroll px-10 text-24 text-primary font-hol text-center;
+  }
+
+  .gamept-button {
+    @apply w-full h-full font-bold outline-transparent focus:outline-[2px] focus:outline-offset-[-2px] focus:outline focus:border-transparent focus:outline-secondary bg-secondaryContainer bg-button-background bg-right bg-cover hover:bg-secondaryHover text-24 text-black;
+  }
+}
+
+/* 스크롤바 숨기기 */
+::-webkit-scrollbar {
+  width: 0em;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+/* Firefox용 스크롤바 숨기기 */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+/* input 태그 자동완성 사용 시 배경색 생기는 거 지우기 */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px #fff inset;
+  -webkit-text-fill-color: white;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: white;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #240903;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  text-decoration: inherit;
+  transition: all 0.5s;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #240903 !important;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 16px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: 'HOL';
+  cursor: pointer;
+  transition: all 0.25s;
+  caret-color: transparent;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #240903;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}

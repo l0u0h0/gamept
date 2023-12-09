@@ -1,0 +1,190 @@
+/* Dice styles */
+.diceFace {
+  box-sizing: border-box;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: #f6f3f0;
+  border: .1px solid gray;
+  border-radius: 20px;
+  transform-style: preserve-3d;
+  transition: 0.5s;
+}
+
+.diceFace::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: lighten(#f6f3f0, 10%);
+  border-radius: 20px;
+  transform: translateZ(-1px);
+}
+
+.diceFace::after {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  background-color: #131210;
+  border-radius: 100%;
+  transform: translateZ(1px);
+}
+
+.front {
+  transform: translateZ(50px);
+}
+
+.front::after {
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  background-color: #f63330;
+}
+
+.up {
+  transform: rotateX(90deg) translateZ(50px);
+}
+
+.up::after {
+  margin: -30px 0 0 -30px;
+  box-shadow: 40px 40px #131210;
+}
+
+.left {
+  transform: rotateY(-90deg) translateZ(50px);
+}
+
+.left::after {
+  margin: -40px 0 0 -40px;
+  box-shadow: 30px 30px #131210, 60px 60px #131210;
+}
+
+.right {
+  transform: rotateY(90deg) translateZ(50px);
+}
+
+.right::after {
+  margin: -30px 0 0 -30px;
+  background-color: #f63330;
+  box-shadow: 40px 0px #f63330, 0px 40px #f63330, 40px 40px #f63330;
+}
+
+.bottom {
+  transform: rotateX(-90deg) translateZ(50px);
+}
+
+.bottom::after {
+  margin: -36px 0 0 -36px;
+  box-shadow: 26px 26px #131210, 52px 52px #131210, 52px 0px #131210, 0px 52px #131210;
+}
+
+.back {
+  transform: rotateX(180deg) translateZ(50px);
+}
+
+.back::after {
+  margin: -40px 0 0 -30px;
+  box-shadow: 40px 0px #131210, 0px 30px #131210, 40px 30px #131210, 0px 60px #131210, 40px 60px #131210;
+}
+
+.dice {
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+  transform: rotate3d(0, 0.9, 0.9, 90deg);
+  transition: 0.5s cubic-bezier(0.42, 1.57, 0.62, 0.86) filter;
+}
+
+.dice1 {
+  position: absolute;
+  right: 55%;
+}
+
+.dice2 {
+  position: absolute;
+  left: 55%;
+  top: 5%;
+}
+
+.dice3 {
+  position: absolute;
+  top: 25%;
+  right: 30%;
+}
+
+.dice.rolling {
+  animation: rotatePerFace 0.7s cubic-bezier(0.22, 1.57, 0.62, 0.86) infinite;
+}
+
+.dice.throw {
+  animation: rotateDice 1s linear reverse, throwDice 1s ease-in;
+}
+
+.diceWrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 200px;
+  height: 300px;
+}
+
+.diceWrap::before {
+  position: absolute;
+  content: "";
+  width: 110%;
+  height: 40%;
+  top: 45%;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 100%;
+  filter: blur(20px);
+}
+
+/* Keyframes */
+@keyframes rotateDice {
+  30% {
+    transform: rotate3d(1, 1, 1, 1080deg);
+  }
+  80% {
+    transform: rotate3d(0, 0, 0, 180deg);
+  }
+}
+
+@keyframes rotatePerFace {
+  16% {
+    transform: rotate3d(-0.1, 0.6, -0.4, 180deg);
+  }
+  32% {
+    transform: rotate3d(-0.85, -0.42, 0.73, 180deg);
+  }
+  48% {
+    transform: rotate3d(-0.8, 0.3, -0.75, 180deg);
+  }
+  64% {
+    transform: rotate3d(0.3, 0.45, 0.9, 180deg);
+  }
+  80% {
+    transform: rotate3d(-0.16, 0.6, 0.18, 180deg);
+  }
+  100% {
+    transform: rotate3d(-0.1, 0.3, -1, 180deg);
+  }
+}
+
+@keyframes throwDice {
+  20% {
+    margin-top: -50px;
+  }
+  60% {
+    margin-top: -100px;
+  }
+  85% {
+    margin-top: -10px;
+  }
+  95% {
+    margin-top: -10px;
+  }
+}

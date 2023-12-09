@@ -1,0 +1,10 @@
+.custom-button {
+    border: none;
+    outline: none;
+    border-radius: 7px 7px 0 0;
+    width: 86px;
+    padding: 1.5%;
+  }
+.custom-button:focus {
+  outline: 2px solid transparent; /* Change the focus outline style */
+}
